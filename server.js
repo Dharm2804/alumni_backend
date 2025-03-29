@@ -23,7 +23,7 @@ const io = new Server(server, {
 });
 
 // Middleware
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(cors({ origin: 'https://alumni-backend-6xcz.onrender.com', credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(
