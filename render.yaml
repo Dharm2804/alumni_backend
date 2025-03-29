@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: my-nodejs-server
+    env: node
+    build:
+      dockerfile: Dockerfile
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        value: mongodb+srv://22it060:22it060@cluster0.lw6qeph.mongodb.net/
+      - key: JWT_SECRET
+        value: 5b159f71717c629ed64f576371564d0a4fc09161423216451c70a1a76f93a1f896f8cc9061085547b9c011d1d0e37f98678c9b83f8d25e3bd8f89ded93bed9bf
+      - key: EMAIL_USER
+        vlaue: dharmkasundra284@gmail.com
+      - key: EMAIL_PASS
+        value: bhjg zoku ccks lmgp
+      - key: CLOUDINARY_CLOUD_NAME
+        vlaue: dfwbkheoh
+      - key: CLOUDINARY_API_KEY
+        value: 514859619417573
+      - key: CLOUDINARY_API_SECRET
+        value: w9HcBQ09oRBJW5LQIDuUGc_Frnc
+    plan: free
