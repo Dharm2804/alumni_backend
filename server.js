@@ -14,7 +14,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ['https://alumni-backend-6xcz.onrender.com', 'http://localhost:5173'],
+    origin: ['https://alumni-frontend-eight.vercel.app', 'http://localhost:5173'],
     methods: ['GET', 'POST'],
     credentials: true,
   },
@@ -23,7 +23,7 @@ const io = new Server(server, {
 });
 
 // Middleware
-app.use(cors({ origin: ['https://alumni-backend-6xcz.onrender.com', 'http://localhost:5173'], credentials: true }));
+app.use(cors({ origin: ['https://alumni-frontend-eight.vercel.app/', 'http://localhost:5173'], credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(
