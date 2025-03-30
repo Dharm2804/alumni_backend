@@ -240,7 +240,7 @@ router.post('/forgot-password', async (req, res) => {
     }
 
     const token = jwt.sign({ email }, process.env.JWT_SECRET_KEY, { expiresIn: '1h' });
-    const resetUrl = `https://alumni-backend-6xcz.onrender.com/reset-password/${token}`;
+    const resetUrl = `https://alumni-frontend-eight.vercel.app/reset-password/${token}`;
 
     await sendResetEmail(email, resetUrl);
 

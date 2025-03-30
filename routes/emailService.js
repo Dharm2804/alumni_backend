@@ -122,7 +122,7 @@ const sendInvitationReceivedEmail = async (to, receiverName, senderName, senderE
       <h3>Hello ${receiverName},</h3>
       <p>You have received an invitation from <strong>${senderName}</strong> (${senderEmail}) with the following details:</p>
       <p><strong>Description:</strong> ${description}</p>
-      <p>Please log in to <a href="https://alumni-backend-6xcz.onrender.com/invitations">Alumni Connect</a> to accept or reject this invitation.</p>
+      <p>Please log in to <a href="https://alumni-frontend-eight.vercel.app/invitations">Alumni Connect</a> to accept or reject this invitation.</p>
       <p>Best regards,<br>Alumni Network Team</p>
     `,
   };
