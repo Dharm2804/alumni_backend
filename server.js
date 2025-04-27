@@ -23,7 +23,7 @@ const io = new Server(server, {
 });
 
 // Middleware
-app.use(cors({ origin: ['https://alumni-frontend-eight.vercel.app', 'http://localhost:5173'], credentials: true }));
+app.use(cors({ origin: ['https://alumni-frontend-eight.vercel.app', 'http://localhost:5173' , 'https://alumni-frontend-agzd66k9s-dharm2804s-projects.vercel.app'], credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(
