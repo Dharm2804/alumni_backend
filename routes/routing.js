@@ -523,19 +523,16 @@ router.get('/current-user', async (req, res) => {
 });
 
 // Get alumni profile based on logged-in user (using email from request)
-router.get('/profile', async (req, res) => {
+// Add authentication middleware first
+const auth = require('../middleware/authMiddleware');
+
+// Modified profile route
+router.get('/profile', auth, async (req, res) => {
   try {
-    const { email } = req.headers; // Expect email to be sent in headers
-    if (!email) {
-      return res.status(401).json({ message: 'Email not provided' });
-    }
+    // Get user ID from the authenticated token
+    const userId = req.user._id;
 
-    const user = await User.findOne({ email });
-    if (!user || user.role !== 'alumni') {
-      return res.status(403).json({ message: 'Unauthorized or not an alumni' });
-    }
-
-    const alumniProfile = await Alumni.findOne({ email });
+    const alumniProfile = await Alumni.findOne({ _id: userId });
     if (!alumniProfile) {
       return res.status(404).json({ message: 'Profile not found' });
     }
