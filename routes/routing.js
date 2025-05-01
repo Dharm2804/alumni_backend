@@ -502,6 +502,8 @@ router.get('/get_alumni_paginated', async (req, res) => {
   }
 });
 
+
+
 // New endpoint to get current user details (for all roles)
 router.get('/current-user', async (req, res) => {
   try {
@@ -523,16 +525,19 @@ router.get('/current-user', async (req, res) => {
 });
 
 // Get alumni profile based on logged-in user (using email from request)
-// Add authentication middleware first
-const auth = require('../middleware/authMiddleware');
-
-// Modified profile route
-router.get('/profile', auth, async (req, res) => {
+router.get('/profile', async (req, res) => {
   try {
-    // Get user ID from the authenticated token
-    const userId = req.user._id;
+    const { email } = req.headers; // Expect email to be sent in headers
+    if (!email) {
+      return res.status(401).json({ message: 'Email not provided' });
+    }
 
-    const alumniProfile = await Alumni.findOne({ _id: userId });
+    const user = await User.findOne({ email });
+    if (!user || user.role !== 'alumni') {
+      return res.status(403).json({ message: 'Unauthorized or not an alumni' });
+    }
+
+    const alumniProfile = await Alumni.findOne({ email });
     if (!alumniProfile) {
       return res.status(404).json({ message: 'Profile not found' });
     }
